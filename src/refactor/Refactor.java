@@ -5,23 +5,23 @@ import java.util.Scanner;
 
 public class Refactor {
 
-    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        menu();
+        Scanner scanner = new Scanner(System.in);
+        menu(scanner);
     }
 
-    private static void menu() {
+    private static void menu(Scanner scanner) {
         int option;
         do {
-            option = chooseOption();
+            option = chooseOption(scanner);
 
             if (option == 1) {
-                int number = askSize();
-                sumatory(number);
+                int number = askSize(scanner);
+                runSumatory(number);
             } else if (option == 2) {
-                int quantity = askSize();
-                average(quantity);
+                int quantity = askSize(scanner);
+                runAverage(quantity, scanner);
             } else if (option == 3) {
                 System.out.println("Saliendo...");
             } else {
@@ -31,7 +31,7 @@ public class Refactor {
         } while (option != 3);
     }
 
-    private static int chooseOption() {
+    private static int chooseOption(Scanner scanner) {
         int option;
         System.out.println("Elige una opción:");
         System.out.println("1. Sumatorio");
@@ -42,7 +42,7 @@ public class Refactor {
         return option;
     }
 
-    private static void average(int quantity) {
+    private static void runAverage(int quantity, Scanner scanner) {
         double sum = 0;
         for (int i = 0; i < quantity; i++) {
             System.out.print("Introduce un número:");
@@ -53,7 +53,7 @@ public class Refactor {
         System.out.println("La media es " + (sum / quantity));
     }
 
-    private static void sumatory(int number) {
+    private static void runSumatory(int number) {
         int sumatory = 0;
         for (int i = 1; i <= number; i++) {
             sumatory += i;
@@ -62,7 +62,7 @@ public class Refactor {
         System.out.println("El sumatorio es " + sumatory);
     }
 
-    private static int askSize() {
+    private static int askSize(Scanner scanner) {
         int number;
         do {
             System.out.print("Introduce un entero positivo: ");
