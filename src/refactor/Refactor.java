@@ -54,6 +54,7 @@ public class Refactor {
     }
 
     private static void runSumatory(int number) {
+
         int sumatory = 0;
         for (int i = 1; i <= number; i++) {
             sumatory += i;
